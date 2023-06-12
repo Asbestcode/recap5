@@ -1,7 +1,5 @@
-import withPlaiceholder from "@plaiceholder/next";
-
 /** @type {import('next').NextConfig} */
-const config = {
+const nextConfig = {
   compiler: {
     styledComponents: true,
   },
@@ -26,4 +24,4 @@ const config = {
   },
 };
 
-export default withPlaiceholder(config);
+module.exports = nextConfig;

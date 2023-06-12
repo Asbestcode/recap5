@@ -19,8 +19,7 @@ export default function Picture({ name, image }) {
   const router = useRouter();
   const { id } = router.query;
   const [src, setSrc] = useState(image);
-  const imageError = 'https://images.unsplash.com/photo-1525785967371-87ba44b3e6cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80'
-
+  
   return (
     <ImageContainer>
       <Image
@@ -37,10 +36,10 @@ export default function Picture({ name, image }) {
         unoptimized={true}
         placeholder="blur"
         blurDataURL="/images/placeholder.jpg"
-        onError={() => setSrc(imageError)}
+        onError={() => setSrc("/images/not-found.jpg")}
         onLoadingComplete={(result) => {
           if (result.naturalWidth === 0) {
-            setSrc(imageError);
+            setSrc("/images/not-found.jpg");
           }
         }}
       />
