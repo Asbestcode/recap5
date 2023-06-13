@@ -47,7 +47,7 @@ export default function TitleBar() {
   const isRoot = id || router.pathname === "/create" || router.pathname === `places/${id}/edit`;
   return (
     <HeadlineContainer>
-      <Headline>Tourio</Headline>
+      <Headline>Touri</Headline>
       {isRoot && 
         <Link href={'/'} passHref legacyBehavior>
           <BackLink justifySelf="start">back</BackLink>
