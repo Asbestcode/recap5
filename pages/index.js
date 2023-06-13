@@ -27,8 +27,26 @@ const LinkContainer = styled.div`
   flex-direction: column;
   gap: 25px;
 `;
+
+const LoadingScreen = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 5rem;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center
+  color: white;
+  z-index: 0;
+`
+
 export default function Home() {
-  const { data } = useSWR('/api/places', { fallbackData: [] });
+  const { data, isLoading, error } = useSWR('/api/places', { fallbackData: [] });
+  if (isLoading || error) return <LoadingScreen>Loading...</LoadingScreen>;
   
   async function resetPlaces() {
     const confirmation = confirm("Are you sure you want to reset all places?");

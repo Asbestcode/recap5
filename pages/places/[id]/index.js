@@ -74,13 +74,29 @@ const NoLink = styled.a`
   font-weight: bold;
 `;
 
+const LoadingScreen = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 5rem;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center
+  color: white;
+  z-index: 0;
+`
+
 export default function DetailsPage() {
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
 
   const { data: place, isLoading, error } = useSWR(`/api/places/${id}`);
-  if (!isReady || isLoading || error) return <h2>Loading...</h2>;
+  if (!isReady || isLoading || error) return <LoadingScreen>Loading...</LoadingScreen>;
 
   async function deletePlace() {
     const confirmation = confirm("Are you sure you want to delete this place?");
